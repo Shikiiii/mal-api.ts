@@ -1,0 +1,38 @@
+{
+  "name": "malts",
+  "version": "0.1.0",
+  "description": "malts is an api wrapper for the myanimelist api that makes it fast, easy and fun to interact with mal. supports all endpoints, has interfaces for every response, and most importantly, saves you a lot of time.",
+  "author": "Shikiiii <shikii123@proton.me>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shikiiii/mal.ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Shikiiii/mal.ts/issues"
+  },
+  "homepage": "https://github.com/Shikiiii/mal.ts#readme",
+  "type": "module",
+  "main": "dist/mal.js",
+  "types": "dist/mal.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/node": "^22.13.10",
+    "eslint": "^9.22.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "prettier": "^3.5.3",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "axios": "^1.8.2",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
