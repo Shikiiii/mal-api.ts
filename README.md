@@ -19,12 +19,12 @@ mal-api.ts is a typescript api wrapper for the myanimelist api that makes it fas
 
 ## Installation
 ```sh
-npm install malts
+npm install mal-api-ts
 ```
 
 ## Usage
 ```ts
-import { MAL } from "malts";
+import { MAL } from "mal-api-ts";
 
 const mal = new MAL("CLIENT_ID", "CLIENT_SECRET", "REDIRECT_URI");
 
@@ -160,7 +160,7 @@ while (results?.next) {
 ## Contributing
 Any contributions are welcome and very appreciated. 💝
 1. Fork the repository.
-2. Clone your fork: `git clone https://github.com/Shikiiii/mal.ts.git`
+2. Clone your fork: `git clone https://github.com/Shikiiii/mal-api.ts.git`
 3. Install dependencies: `npm install`
 4. Create a new branch: `git checkout -b feature-name`
 5. Commit your changes: `git commit -m "Add feature"`
