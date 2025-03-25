@@ -1,9 +1,9 @@
 # MyAnimeList API Wrapper
 
-![License](https://img.shields.io/github/license/Shikiiii/mal.ts)
+![License](https://img.shields.io/github/license/Shikiiii/mal-api.ts)
 ![Version](https://img.shields.io/npm/v/mal-api-ts)
 
-mal.ts is a typescript api wrapper for the myanimelist api that makes it fast, easy and fun to interact with mal. supports all endpoints, has interfaces for every response, and most importantly, saves you a lot of time.
+mal-api.ts is a typescript api wrapper for the myanimelist api that makes it fast, easy and fun to interact with mal. supports all endpoints, has interfaces for every response, and most importantly, saves you a lot of time.
 
 ## Features
 - Fetch anime and manga details
