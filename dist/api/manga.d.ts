@@ -1,5 +1,5 @@
 import { MALClient } from "./client";
-import { MANGA_FIELDS } from "../utils/constants";
+import { MANGA_FIELDS, RANKING_MANGA } from "../utils/constants";
 import { Manga, MangaSearchResult } from "../models/manga";
 export declare class MangaAPI {
     private client;
@@ -56,7 +56,7 @@ export declare class MangaAPI {
      * @returns {Promise<AnimeSearchResult | null>} - Returns a promise that resolves to an `MangaSearchResult` object, or `null` if MAL API is having issues.
      */
     top({ ranking_type, limit, offset, fieldPreset, extraFields, }?: {
-        ranking_type?: string;
+        ranking_type?: string | RANKING_MANGA;
         limit?: number;
         offset?: number;
         fieldPreset?: keyof typeof MANGA_FIELDS | string[];

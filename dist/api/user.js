@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,10 +7,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserAPI = void 0;
-const constants_1 = require("../utils/constants");
-class UserAPI {
+import { BASE_URL, ANIME_FIELDS, MANGA_FIELDS, USER_FIELDS } from "../utils/constants.js";
+export class UserAPI {
     constructor(client) {
         this.client = client;
         this.main = this;
@@ -40,8 +37,8 @@ class UserAPI {
      */
     info() {
         return __awaiter(this, void 0, void 0, function* () {
-            let fields = constants_1.USER_FIELDS["full"];
-            let api_url = `${constants_1.BASE_URL}/users/@me?fields=${fields.join(",")}`;
+            let fields = USER_FIELDS["full"];
+            let api_url = `${BASE_URL}/users/@me?fields=${fields.join(",")}`;
             const raw = yield this.client.fetchData(api_url, "user", "user info");
             if (!raw)
                 return null;
@@ -215,13 +212,13 @@ class UserAPI {
             let fields;
             // Check if fieldPreset is an array or a preset string
             if (Array.isArray(fieldPreset)) {
-                fields = [...constants_1.ANIME_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
+                fields = [...ANIME_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
             }
             else {
                 // Use preset + optional extra fields, default to "medium" if preset is not valid
-                fields = [...(constants_1.ANIME_FIELDS[fieldPreset] || constants_1.ANIME_FIELDS["medium"]), ...extraFields];
+                fields = [...(ANIME_FIELDS[fieldPreset] || ANIME_FIELDS["medium"]), ...extraFields];
             }
-            let api_url = `${constants_1.BASE_URL}/anime/suggestions?limit=${limit}&offset=${offset}&fields=${fields.join(",")}`;
+            let api_url = `${BASE_URL}/anime/suggestions?limit=${limit}&offset=${offset}&fields=${fields.join(",")}`;
             const raw = yield this.client.fetchData(api_url, "anime", "user suggestions");
             if (!raw)
                 return null;
@@ -238,7 +235,6 @@ class UserAPI {
         });
     }
 }
-exports.UserAPI = UserAPI;
 class UserAnimeListAPI {
     constructor(client, main) {
         this.client = client;
@@ -395,13 +391,13 @@ class UserAnimeListAPI {
             let fields;
             // Check if fieldPreset is an array or a preset string
             if (Array.isArray(fieldPreset)) {
-                fields = [...constants_1.ANIME_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
+                fields = [...ANIME_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
             }
             else {
                 // Use preset + optional extra fields, default to "medium" if preset is not valid
-                fields = [...(constants_1.ANIME_FIELDS[fieldPreset] || constants_1.ANIME_FIELDS["medium"]), ...extraFields];
+                fields = [...(ANIME_FIELDS[fieldPreset] || ANIME_FIELDS["medium"]), ...extraFields];
             }
-            let api_url = `${constants_1.BASE_URL}/users/${username}/animelist?limit=${limit}&offset=${offset}&fields=${fields.join(",")}`;
+            let api_url = `${BASE_URL}/users/${username}/animelist?limit=${limit}&offset=${offset}&fields=${fields.join(",")}`;
             if (status.toLowerCase() !== "all") {
                 api_url += `&status=${status.toLowerCase()}`;
             }
@@ -443,7 +439,7 @@ class UserAnimeListAPI {
      */
     update(_a) {
         return __awaiter(this, arguments, void 0, function* ({ id, status = "watching", score, is_rewatching, episodes, priority, times_rewatched, rewatch_value, tags, comments }) {
-            const api_url = `${constants_1.BASE_URL}/anime/${id}/my_list_status`;
+            const api_url = `${BASE_URL}/anime/${id}/my_list_status`;
             const params = new URLSearchParams();
             // Valid statuses
             const validStatuses = ["watching", "completed", "dropped", "plan_to_watch", "on_hold"];
@@ -499,7 +495,7 @@ class UserAnimeListAPI {
      */
     delete(_a) {
         return __awaiter(this, arguments, void 0, function* ({ id }) {
-            const api_url = `${constants_1.BASE_URL}/anime/${id}/my_list_status`;
+            const api_url = `${BASE_URL}/anime/${id}/my_list_status`;
             return yield this.client.deleteEntry(api_url, "anime", id);
         });
     }
@@ -669,13 +665,13 @@ class UserMangaListAPI {
             let fields;
             // Check if fieldPreset is an array or a preset string
             if (Array.isArray(fieldPreset)) {
-                fields = [...constants_1.MANGA_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
+                fields = [...MANGA_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
             }
             else {
                 // Use preset + optional extra fields, default to "medium" if preset is not valid
-                fields = [...(constants_1.MANGA_FIELDS[fieldPreset] || constants_1.MANGA_FIELDS["medium"]), ...extraFields];
+                fields = [...(MANGA_FIELDS[fieldPreset] || MANGA_FIELDS["medium"]), ...extraFields];
             }
-            let api_url = `${constants_1.BASE_URL}/users/${username}/mangalist?limit=${limit}&offset=${offset}&fields=${fields.join(",")}`;
+            let api_url = `${BASE_URL}/users/${username}/mangalist?limit=${limit}&offset=${offset}&fields=${fields.join(",")}`;
             if (status.toLowerCase() !== "all") {
                 api_url += `&status=${status.toLowerCase()}`;
             }
@@ -718,7 +714,7 @@ class UserMangaListAPI {
      */
     update(_a) {
         return __awaiter(this, arguments, void 0, function* ({ id, status = "reading", score, is_rereading, chapters, volumes, priority, times_reread, rewatch_value, tags, comments }) {
-            const api_url = `${constants_1.BASE_URL}/manga/${id}/my_list_status`;
+            const api_url = `${BASE_URL}/manga/${id}/my_list_status`;
             const params = new URLSearchParams();
             // Valid statuses
             const validStatuses = ["reading", "completed", "dropped", "plan_to_read", "on_hold"];
@@ -776,7 +772,7 @@ class UserMangaListAPI {
      */
     delete(_a) {
         return __awaiter(this, arguments, void 0, function* ({ id }) {
-            const api_url = `${constants_1.BASE_URL}/manga/${id}/my_list_status`;
+            const api_url = `${BASE_URL}/manga/${id}/my_list_status`;
             return yield this.client.deleteEntry(api_url, "manga", id);
         });
     }

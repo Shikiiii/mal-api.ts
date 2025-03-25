@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,10 +7,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.AnimeAPI = void 0;
-const constants_1 = require("../utils/constants");
-class AnimeAPI {
+import { BASE_URL, ANIME_FIELDS } from "../utils/constants.js";
+export class AnimeAPI {
     constructor(client) {
         this.client = client;
     }
@@ -35,13 +32,13 @@ class AnimeAPI {
             let fields;
             // Check if fieldPreset is an array or a preset string
             if (Array.isArray(fieldPreset)) {
-                fields = [...constants_1.ANIME_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
+                fields = [...ANIME_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
             }
             else {
                 // Use preset + optional extra fields, default to "medium" if preset is not valid
-                fields = [...(constants_1.ANIME_FIELDS[fieldPreset] || constants_1.ANIME_FIELDS["medium"]), ...extraFields];
+                fields = [...(ANIME_FIELDS[fieldPreset] || ANIME_FIELDS["medium"]), ...extraFields];
             }
-            const api_url = `${constants_1.BASE_URL}/anime/${id}?fields=${fields.join(",")}`;
+            const api_url = `${BASE_URL}/anime/${id}?fields=${fields.join(",")}`;
             const data = yield this.client.fetchData(api_url, "anime", id);
             if (!data)
                 return null;
@@ -271,13 +268,13 @@ class AnimeAPI {
             let fields;
             // Check if fieldPreset is an array or a preset string
             if (Array.isArray(fieldPreset)) {
-                fields = [...constants_1.ANIME_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
+                fields = [...ANIME_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
             }
             else {
                 // Use preset + optional extra fields, default to "medium" if preset is not valid
-                fields = [...(constants_1.ANIME_FIELDS[fieldPreset] || constants_1.ANIME_FIELDS["medium"]), ...extraFields];
+                fields = [...(ANIME_FIELDS[fieldPreset] || ANIME_FIELDS["medium"]), ...extraFields];
             }
-            let api_url = `${constants_1.BASE_URL}/anime?q=${query}&limit=${limit}&offset=${offset}&fields=${fields.join(",")}`;
+            let api_url = `${BASE_URL}/anime?q=${query}&limit=${limit}&offset=${offset}&fields=${fields.join(",")}`;
             const raw = yield this.client.fetchData(api_url, "anime", query);
             if (!raw)
                 return null;
@@ -321,13 +318,13 @@ class AnimeAPI {
             let fields;
             // Check if fieldPreset is an array or a preset string
             if (Array.isArray(fieldPreset)) {
-                fields = [...constants_1.ANIME_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
+                fields = [...ANIME_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
             }
             else {
                 // Use preset + optional extra fields, default to "medium" if preset is not valid
-                fields = [...(constants_1.ANIME_FIELDS[fieldPreset] || constants_1.ANIME_FIELDS["medium"]), ...extraFields];
+                fields = [...(ANIME_FIELDS[fieldPreset] || ANIME_FIELDS["medium"]), ...extraFields];
             }
-            let api_url = `${constants_1.BASE_URL}/anime/ranking?ranking_type=${ranking_type}&limit=${limit}&offset=${offset}&fields=${fields.join(",")}`;
+            let api_url = `${BASE_URL}/anime/ranking?ranking_type=${ranking_type}&limit=${limit}&offset=${offset}&fields=${fields.join(",")}`;
             const raw = yield this.client.fetchData(api_url, "anime", ranking_type);
             if (!raw)
                 return null;
@@ -388,8 +385,8 @@ class AnimeAPI {
                 if ((!Number.isInteger(Number(season_split[1])) ||
                     Number(season_split[1]) < 1970)
                     &&
-                        (!Number.isInteger(Number(season_split[0])) ||
-                            Number(season_split[0]) < 1970)) {
+                    (!Number.isInteger(Number(season_split[0])) ||
+                        Number(season_split[0]) < 1970)) {
                     throw new Error("Invalid year. Must be at least 1970.");
                 }
                 if (seasons.includes(season_split[0])) {
@@ -411,11 +408,11 @@ class AnimeAPI {
             let fields;
             // Check if fieldPreset is an array or a preset string
             if (Array.isArray(fieldPreset)) {
-                fields = [...constants_1.ANIME_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
+                fields = [...ANIME_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
             }
             else {
                 // Use preset + optional extra fields, default to "medium" if preset is not valid
-                fields = [...(constants_1.ANIME_FIELDS[fieldPreset] || constants_1.ANIME_FIELDS["medium"]), ...extraFields];
+                fields = [...(ANIME_FIELDS[fieldPreset] || ANIME_FIELDS["medium"]), ...extraFields];
             }
             let _limit = limit.toString();
             let _offset = offset.toString();
@@ -432,7 +429,7 @@ class AnimeAPI {
                 // Add the sort param before the others
                 queryParams = new URLSearchParams([...sortParams, ...queryParams]);
             }
-            let api_url = `${constants_1.BASE_URL}/anime/season/${season_year}/${season_period}?${queryParams.toString()}`;
+            let api_url = `${BASE_URL}/anime/season/${season_year}/${season_period}?${queryParams.toString()}`;
             const raw = yield this.client.fetchData(api_url, "anime", season);
             if (!raw)
                 return null;
@@ -449,5 +446,4 @@ class AnimeAPI {
         });
     }
 }
-exports.AnimeAPI = AnimeAPI;
 //# sourceMappingURL=anime.js.map

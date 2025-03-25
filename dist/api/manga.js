@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,10 +7,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.MangaAPI = void 0;
-const constants_1 = require("../utils/constants");
-class MangaAPI {
+import { BASE_URL, MANGA_FIELDS } from "../utils/constants.js";
+export class MangaAPI {
     constructor(client) {
         this.client = client;
     }
@@ -35,13 +32,13 @@ class MangaAPI {
             let fields;
             // Check if fieldPreset is an array or a preset string
             if (Array.isArray(fieldPreset)) {
-                fields = [...constants_1.MANGA_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
+                fields = [...MANGA_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
             }
             else {
                 // Use preset + optional extra fields, default to "medium" if preset is not valid
-                fields = [...(constants_1.MANGA_FIELDS[fieldPreset] || constants_1.MANGA_FIELDS["medium"]), ...extraFields];
+                fields = [...(MANGA_FIELDS[fieldPreset] || MANGA_FIELDS["medium"]), ...extraFields];
             }
-            const api_url = `${constants_1.BASE_URL}/manga/${id}?fields=${fields.join(",")}`;
+            const api_url = `${BASE_URL}/manga/${id}?fields=${fields.join(",")}`;
             const data = yield this.client.fetchData(api_url, "manga", id);
             if (!data)
                 return null;
@@ -273,13 +270,13 @@ class MangaAPI {
             let fields;
             // Check if fieldPreset is an array or a preset string
             if (Array.isArray(fieldPreset)) {
-                fields = [...constants_1.MANGA_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
+                fields = [...MANGA_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
             }
             else {
                 // Use preset + optional extra fields, default to "medium" if preset is not valid
-                fields = [...(constants_1.MANGA_FIELDS[fieldPreset] || constants_1.MANGA_FIELDS["medium"]), ...extraFields];
+                fields = [...(MANGA_FIELDS[fieldPreset] || MANGA_FIELDS["medium"]), ...extraFields];
             }
-            let api_url = `${constants_1.BASE_URL}/manga?q=${query}&limit=${limit}&offset=${offset}&fields=${fields.join(",")}`;
+            let api_url = `${BASE_URL}/manga?q=${query}&limit=${limit}&offset=${offset}&fields=${fields.join(",")}`;
             const raw = yield this.client.fetchData(api_url, "manga", query);
             if (!raw)
                 return null;
@@ -323,13 +320,13 @@ class MangaAPI {
             let fields;
             // Check if fieldPreset is an array or a preset string
             if (Array.isArray(fieldPreset)) {
-                fields = [...constants_1.MANGA_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
+                fields = [...MANGA_FIELDS["medium"], ...fieldPreset]; // User passed a custom array
             }
             else {
                 // Use preset + optional extra fields, default to "medium" if preset is not valid
-                fields = [...(constants_1.MANGA_FIELDS[fieldPreset] || constants_1.MANGA_FIELDS["medium"]), ...extraFields];
+                fields = [...(MANGA_FIELDS[fieldPreset] || MANGA_FIELDS["medium"]), ...extraFields];
             }
-            let api_url = `${constants_1.BASE_URL}/manga/ranking?ranking_type=${ranking_type}&limit=${limit}&offset=${offset}&fields=${fields.join(",")}`;
+            let api_url = `${BASE_URL}/manga/ranking?ranking_type=${ranking_type}&limit=${limit}&offset=${offset}&fields=${fields.join(",")}`;
             const raw = yield this.client.fetchData(api_url, "manga", ranking_type);
             if (!raw)
                 return null;
@@ -346,5 +343,4 @@ class MangaAPI {
         });
     }
 }
-exports.MangaAPI = MangaAPI;
 //# sourceMappingURL=manga.js.map

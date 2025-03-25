@@ -1,8 +1,8 @@
-import { MALClient } from "./client";
+import { MALClient } from "@api/client";
 import jwt from 'jsonwebtoken';
-import { BASE_URL } from "../utils/constants";
+import { BASE_URL } from "@utils/constants";
 import axios from "axios";
-import { AuthFailed } from "./client";
+import { AuthFailed } from "@api/client";
 import * as crypto from 'crypto';
 import * as querystring from "node:querystring";
 

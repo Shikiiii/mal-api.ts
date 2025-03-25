@@ -1,6 +1,6 @@
-import { MALClient } from "./client";
-import { BASE_URL, MANGA_FIELDS } from "../utils/constants";
-import { Manga, RawManga, MangaRawSearchResults, MangaSearchResult } from "../models/manga";
+import { MALClient } from "@api/client";
+import { BASE_URL, MANGA_FIELDS, RANKING_MANGA } from "@utils/constants";
+import { Manga, RawManga, MangaRawSearchResults, MangaSearchResult } from "@models/manga";
 
 export class MangaAPI {
     private client: MALClient;
@@ -340,7 +340,7 @@ export class MangaAPI {
         fieldPreset = "medium",
         extraFields = [],
     }: {
-        ranking_type?: string;
+        ranking_type?: string | RANKING_MANGA;
         limit?: number;
         offset?: number;
         fieldPreset?: keyof typeof MANGA_FIELDS | string[];

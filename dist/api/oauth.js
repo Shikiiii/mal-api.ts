@@ -1,37 +1,3 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || (function () {
-    var ownKeys = function(o) {
-        ownKeys = Object.getOwnPropertyNames || function (o) {
-            var ar = [];
-            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
-            return ar;
-        };
-        return ownKeys(o);
-    };
-    return function (mod) {
-        if (mod && mod.__esModule) return mod;
-        var result = {};
-        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
-        __setModuleDefault(result, mod);
-        return result;
-    };
-})();
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -41,18 +7,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.OAuth = void 0;
-const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const constants_1 = require("../utils/constants");
-const axios_1 = __importDefault(require("axios"));
-const client_1 = require("./client");
-const crypto = __importStar(require("crypto"));
-const querystring = __importStar(require("node:querystring"));
-class OAuth {
+import jwt from 'jsonwebtoken';
+import { BASE_URL } from "../utils/constants.js";
+import axios from "axios";
+import { AuthFailed } from "./client.js";
+import * as crypto from 'crypto';
+import * as querystring from "node:querystring";
+export class OAuth {
     constructor(client) {
         this.client = client;
     }
@@ -62,7 +23,7 @@ class OAuth {
             return null;
         }
         try {
-            return jsonwebtoken_1.default.decode(token);
+            return jwt.decode(token);
         }
         catch (err) {
             return null;
@@ -130,15 +91,15 @@ class OAuth {
                 grant_type: 'refresh_token',
             };
             try {
-                const response = yield axios_1.default.post(`${constants_1.BASE_URL}/oauth2/token`, params);
+                const response = yield axios.post(`${BASE_URL}/oauth2/token`, params);
                 if (response.status !== 200) {
-                    throw new client_1.AuthFailed("refreshing token");
+                    throw new AuthFailed("refreshing token");
                 }
                 return response.data.access_token;
             }
             catch (error) {
                 // Handle case where refresh token is expired
-                if (axios_1.default.isAxiosError(error) && error.message.includes('invalid_grant')) {
+                if (axios.isAxiosError(error) && error.message.includes('invalid_grant')) {
                     throw new Error('Refresh token expired or invalid. Please re-authenticate.');
                 }
                 throw error;
@@ -203,12 +164,12 @@ class OAuth {
                 code_verifier: code_verifier, // PKCE code_verifier
             });
             try {
-                const response = yield axios_1.default.post('https://myanimelist.net/v1/oauth2/token', params.toString(), // Convert to URL-encoded format
-                {
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded', // Correct content type
-                    },
-                });
+                const response = yield axios.post('https://myanimelist.net/v1/oauth2/token', params.toString(), // Convert to URL-encoded format
+                    {
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded', // Correct content type
+                        },
+                    });
                 if (response.status !== 200) {
                     throw new Error("Something went wrong when verifying login. Either the code was invalid, you've not set up the properties properly, or MAL API is having issues.");
                 }
@@ -226,5 +187,4 @@ class OAuth {
         });
     }
 }
-exports.OAuth = OAuth;
 //# sourceMappingURL=oauth.js.map
