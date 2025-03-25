@@ -1,6 +1,6 @@
-import { MALClient } from "./client";
-import { ANIME_FIELDS, RANKING_ANIME } from "../utils/constants";
-import { Anime, AnimeSearchResult } from "../models/anime";
+import { MALClient } from "./client.js";
+import { ANIME_FIELDS, RANKING_ANIME } from "../utils/constants.js";
+import { Anime, AnimeSearchResult } from "../models/anime.js";
 export declare class AnimeAPI {
     private client;
     constructor(client: MALClient);

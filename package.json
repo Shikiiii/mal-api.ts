@@ -1,7 +1,7 @@
 {
-  "name": "malts",
+  "name": "mal-api-ts",
   "version": "0.1.0",
-  "description": "malts is an api wrapper for the myanimelist api that makes it fast, easy and fun to interact with mal. supports all endpoints, has interfaces for every response, and most importantly, saves you a lot of time.",
+  "description": "mal-api-ts is an api wrapper for the myanimelist api that makes it fast, easy and fun to interact with mal. supports all endpoints, has interfaces for every response, and most importantly, saves you a lot of time.",
   "author": "Shikiiii <shikii123@proton.me>",
   "license": "MIT",
   "repository": {

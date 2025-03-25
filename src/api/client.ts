@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AnimeDoesNotExist, MangaDoesNotExist, InvalidCredentials, UserError, AuthFailed, RefreshTokenExpired } from "@utils/errors";
+import { AnimeDoesNotExist, MangaDoesNotExist, InvalidCredentials, UserError, AuthFailed, RefreshTokenExpired } from "@utils/errors.js";
 export { AnimeDoesNotExist, MangaDoesNotExist, InvalidCredentials, UserError, AuthFailed, RefreshTokenExpired }; // Re-export the error classes
 
 export class MALClient {

@@ -385,8 +385,8 @@ export class AnimeAPI {
                 if ((!Number.isInteger(Number(season_split[1])) ||
                     Number(season_split[1]) < 1970)
                     &&
-                    (!Number.isInteger(Number(season_split[0])) ||
-                        Number(season_split[0]) < 1970)) {
+                        (!Number.isInteger(Number(season_split[0])) ||
+                            Number(season_split[0]) < 1970)) {
                     throw new Error("Invalid year. Must be at least 1970.");
                 }
                 if (seasons.includes(season_split[0])) {

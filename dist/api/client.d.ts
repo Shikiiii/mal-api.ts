@@ -1,4 +1,4 @@
-import { AnimeDoesNotExist, MangaDoesNotExist, InvalidCredentials, UserError, AuthFailed, RefreshTokenExpired } from "../utils/errors";
+import { AnimeDoesNotExist, MangaDoesNotExist, InvalidCredentials, UserError, AuthFailed, RefreshTokenExpired } from "../utils/errors.js";
 export { AnimeDoesNotExist, MangaDoesNotExist, InvalidCredentials, UserError, AuthFailed, RefreshTokenExpired };
 export declare class MALClient {
     private clientId;

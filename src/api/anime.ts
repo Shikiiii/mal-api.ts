@@ -1,6 +1,6 @@
-import { MALClient } from "@api/client";
-import { BASE_URL, ANIME_FIELDS, RANKING_ANIME } from "@utils/constants";
-import { Anime, RawAnime, AnimeRawSearchResults, AnimeSearchResult } from "@models/anime";
+import { MALClient } from "@api/client.js";
+import { BASE_URL, ANIME_FIELDS, RANKING_ANIME } from "@utils/constants.js";
+import { Anime, RawAnime, AnimeRawSearchResults, AnimeSearchResult } from "@models/anime.js";
 
 export class AnimeAPI {
     private client: MALClient;

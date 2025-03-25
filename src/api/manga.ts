@@ -1,6 +1,6 @@
-import { MALClient } from "@api/client";
-import { BASE_URL, MANGA_FIELDS, RANKING_MANGA } from "@utils/constants";
-import { Manga, RawManga, MangaRawSearchResults, MangaSearchResult } from "@models/manga";
+import { MALClient } from "@api/client.js";
+import { BASE_URL, MANGA_FIELDS, RANKING_MANGA } from "@utils/constants.js";
+import { Manga, RawManga, MangaRawSearchResults, MangaSearchResult } from "@models/manga.js";
 
 export class MangaAPI {
     private client: MALClient;

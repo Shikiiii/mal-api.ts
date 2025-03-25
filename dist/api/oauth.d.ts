@@ -1,4 +1,4 @@
-import { MALClient } from "./client";
+import { MALClient } from "./client.js";
 export declare class OAuth {
     private client;
     constructor(client: MALClient);

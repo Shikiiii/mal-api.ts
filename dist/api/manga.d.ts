@@ -1,6 +1,6 @@
-import { MALClient } from "./client";
-import { MANGA_FIELDS, RANKING_MANGA } from "../utils/constants";
-import { Manga, MangaSearchResult } from "../models/manga";
+import { MALClient } from "./client.js";
+import { MANGA_FIELDS, RANKING_MANGA } from "../utils/constants.js";
+import { Manga, MangaSearchResult } from "../models/manga.js";
 export declare class MangaAPI {
     private client;
     constructor(client: MALClient);

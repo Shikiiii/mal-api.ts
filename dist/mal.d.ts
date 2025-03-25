@@ -1,9 +1,9 @@
-import { AnimeAPI } from "./api/anime";
-import { MangaAPI } from "./api/manga";
-import { UserAPI } from "./api/user";
-import { OAuth } from "./api/oauth";
-import { AnimeDoesNotExist, MangaDoesNotExist, InvalidCredentials, AuthFailed, RefreshTokenExpired } from "./api/client";
-import { FIELD_PRESET, RANKING_ANIME, RANKING_MANGA, WATCHING_STATUS, WATCHING_STATUS_UPDATE, READING_STATUS, READING_STATUS_UPDATE } from "./utils/constants";
+import { AnimeAPI } from "./api/anime.js";
+import { MangaAPI } from "./api/manga.js";
+import { UserAPI } from "./api/user.js";
+import { OAuth } from "./api/oauth.js";
+import { AnimeDoesNotExist, MangaDoesNotExist, InvalidCredentials, AuthFailed, RefreshTokenExpired } from "./api/client.js";
+import { FIELD_PRESET, RANKING_ANIME, RANKING_MANGA, WATCHING_STATUS, WATCHING_STATUS_UPDATE, READING_STATUS, READING_STATUS_UPDATE } from "./utils/constants.js";
 export { FIELD_PRESET, RANKING_ANIME, RANKING_MANGA, WATCHING_STATUS, WATCHING_STATUS_UPDATE, READING_STATUS, READING_STATUS_UPDATE };
 export declare class MAL {
     private client;

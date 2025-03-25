@@ -1,8 +1,8 @@
-import { MALClient } from "./client";
-import { ANIME_FIELDS, MANGA_FIELDS, WATCHING_STATUS, WATCHING_STATUS_UPDATE, READING_STATUS_UPDATE, READING_STATUS } from "../utils/constants";
-import { Anime } from "../models/anime";
-import { Manga } from "../models/manga";
-import { User, AnimeList, MangaList, AnimeEntry, MangaEntry } from "../models/user";
+import { MALClient } from "./client.js";
+import { ANIME_FIELDS, MANGA_FIELDS, WATCHING_STATUS, WATCHING_STATUS_UPDATE, READING_STATUS_UPDATE, READING_STATUS } from "../utils/constants.js";
+import { Anime } from "../models/anime.js";
+import { Manga } from "../models/manga.js";
+import { User, AnimeList, MangaList, AnimeEntry, MangaEntry } from "../models/user.js";
 export declare class UserAPI {
     private client;
     animelist: UserAnimeListAPI;

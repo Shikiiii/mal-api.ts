@@ -165,11 +165,11 @@ export class OAuth {
             });
             try {
                 const response = yield axios.post('https://myanimelist.net/v1/oauth2/token', params.toString(), // Convert to URL-encoded format
-                    {
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded', // Correct content type
-                        },
-                    });
+                {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded', // Correct content type
+                    },
+                });
                 if (response.status !== 200) {
                     throw new Error("Something went wrong when verifying login. Either the code was invalid, you've not set up the properties properly, or MAL API is having issues.");
                 }

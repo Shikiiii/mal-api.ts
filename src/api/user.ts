@@ -1,8 +1,8 @@
-import { MALClient } from "@api/client";
-import { BASE_URL, ANIME_FIELDS, MANGA_FIELDS, USER_FIELDS, WATCHING_STATUS, WATCHING_STATUS_UPDATE, READING_STATUS_UPDATE, READING_STATUS } from "@utils/constants";
-import { Anime, AnimeRawSearchResults } from "@models/anime";
-import { Manga, MangaRawSearchResults } from "@models/manga";
-import { User, RawUser, AnimeList, MangaList, RawAnimeEntry, AnimeEntry, RawMangaEntry, MangaEntry } from "@models/user";
+import { MALClient } from "@api/client.js";
+import { BASE_URL, ANIME_FIELDS, MANGA_FIELDS, USER_FIELDS, WATCHING_STATUS, WATCHING_STATUS_UPDATE, READING_STATUS_UPDATE, READING_STATUS } from "@utils/constants.js";
+import { Anime, AnimeRawSearchResults } from "@models/anime.js";
+import { Manga, MangaRawSearchResults } from "@models/manga.js";
+import { User, RawUser, AnimeList, MangaList, RawAnimeEntry, AnimeEntry, RawMangaEntry, MangaEntry } from "@models/user.js";
 
 export class UserAPI {
     private client: MALClient;
